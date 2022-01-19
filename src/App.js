@@ -2,6 +2,7 @@ import React from "react";
 import Apods from "./components/Apods";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateFnsAdapter from "@mui/lab/AdapterDateFns";
+import CircularProgress from "@mui/material/CircularProgress";
 import "./styles.css";
 
 /* pastWeek() returns the date of 7 days previous of today's date */
@@ -75,7 +76,11 @@ export default function App() {
   if (error) {
     return <div>{error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return (
+      <CircularProgress
+        sx={{ position: "absolute", top: "50%", left: "50%" }}
+      />
+    );
   } else {
     return (
       <LocalizationProvider dateAdapter={DateFnsAdapter}>
